@@ -2,8 +2,11 @@
 #define RENDERER_H
 
 #include <vector>
-#include "SDL.h"
+#include "SDL2/SDL.h"
 #include "snake.h"
+#include "obstacle.h"
+#include "food.h"
+#include "ComputerSnake.h"
 
 class Renderer {
  public:
@@ -11,8 +14,8 @@ class Renderer {
            const std::size_t grid_width, const std::size_t grid_height);
   ~Renderer();
 
-  void Render(Snake const snake, SDL_Point const &food);
-  void UpdateWindowTitle(int score, int fps);
+  void Render(std::vector<Obstacle> obstacles, Snake const snake, Food const &food, ComputerSnake const compSnake);
+  void UpdateWindowTitle(int score, int fps, float compScore);
 
  private:
   SDL_Window *sdl_window;

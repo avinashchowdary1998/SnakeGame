@@ -2,17 +2,18 @@
 #define SNAKE_H
 
 #include <vector>
-#include "SDL.h"
+#include "SDL2/SDL.h"
 
 class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
-  Snake(int grid_width, int grid_height)
+  Snake(int grid_width, int grid_height, float InitialSpeed)
       : grid_width(grid_width),
         grid_height(grid_height),
         head_x(grid_width / 2),
-        head_y(grid_height / 2) {}
+        head_y(grid_height / 2),
+        speed(InitialSpeed) {}
 
   void Update();
 
@@ -21,7 +22,7 @@ class Snake {
 
   Direction direction = Direction::kUp;
 
-  float speed{0.1f};
+  float speed;
   int size{1};
   bool alive{true};
   float head_x;
